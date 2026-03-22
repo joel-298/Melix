@@ -4,7 +4,7 @@ const { cloudinary } = require('../config/cloudinary');
 exports.updateProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
-    const { name } = req.body;
+    const { name } = req.body; 
     if (name) user.name = name;
     if (req.file) {
       if (user.profileImagePublicId) await cloudinary.uploader.destroy(user.profileImagePublicId);
